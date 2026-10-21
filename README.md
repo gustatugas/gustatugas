@@ -43,15 +43,14 @@ Tecnologias e conceitos que fazem parte da minha evolução na programação.
 
 <div align="left">
 
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
 
 </div>
 
 Também estudo lógica de programação, manipulação do DOM, eventos, funções, arrays, objetos, armazenamento local com LocalStorage, responsividade e organização de projetos.
-
 ## Projetos
 
 ### Pomodoro — Foco e Produtividade
