@@ -1,102 +1,96 @@
-# Gustavo | Desenvolvedor de Software em formação
+# 🍅 Pomodoro — Foco e Produtividade
 
-<div align="center">
+Aplicação web de Pomodoro com lista de tarefas e registro do tempo de estudo do dia, sobre um plano de fundo em pixel art animado. Feita com HTML, CSS e JavaScript puro, sem frameworks nem bibliotecas.
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=7C9BFF&center=true&vCenter=true&width=600&lines=Estudante+de+Ci%C3%AAncia+da+Computa%C3%A7%C3%A3o;Desenvolvimento+de+Software;Aprendendo%2C+praticando+e+evoluindo)](https://git.io/typing-svg)
+🔗 **Demo online:** [pomodoro.gustavo-b-souza002.workers.dev](https://pomodoro.gustavo-b-souza002.workers.dev/)
 
-Estudante de Ciência da Computação, interessado em desenvolvimento de software, resolução de problemas e criação de aplicações. Utilizo projetos práticos para consolidar meus conhecimentos e evoluir continuamente na programação.
+<!-- Dica: adicione aqui um print ou GIF do projeto funcionando
+![Pré-visualização](docs/preview.gif)
+-->
 
-[![GitHub](https://img.shields.io/badge/GitHub-gustatugas-181717?style=for-the-badge&logo=github)](https://github.com/gustatugas)
-[![Foco](https://img.shields.io/badge/Foco-Desenvolvimento%20de%20Software-2563EB?style=for-the-badge&logo=visualstudiocode&logoColor=white)](https://github.com/gustatugas)
+## Funcionalidades
 
-</div>
+**Temporizador**
+- Tempo de foco configurável de 5 a 60 minutos (de 5 em 5).
+- Tempo de descanso de 5, 10 ou 15 minutos.
+- Controles de iniciar, pausar, continuar e reiniciar.
+- Ao terminar o foco, o descanso começa automaticamente.
+- O timer continua correto ao recarregar a página ou trocar de aba, porque a contagem é baseada no horário de término e não em "ticks" de 1 segundo.
 
----
+**Histórico de estudo**
+- Soma os minutos de foco concluídos no dia.
+- O total é exibido em minutos ou em horas (`45min`, `1h 30min`) e zera automaticamente a cada novo dia.
+- Os dados ficam guardados por data (`AAAA-MM-DD`), o que permite evoluir para relatórios semanais e mensais.
 
-## Sobre mim
+**Lista de tarefas**
+- Adicionar (botão `+` ou tecla Enter), marcar como concluída e remover.
+- Cada tarefa tem um id único (`crypto.randomUUID()`).
+- As tarefas persistem após recarregar a página.
 
-- Estudante de Ciência da Computação.
-- Foco em desenvolvimento de software.
-- Pratico programação por meio de projetos pessoais.
-- Tenho interesse em desenvolvimento web, lógica de programação e construção de aplicações.
-- Busco desenvolver minhas habilidades técnicas e me preparar para oportunidades profissionais na área de tecnologia.
+**Interface**
+- Vídeo em pixel art como plano de fundo.
+- Layout responsivo para desktop, tablet (≤ 900px) e celular (≤ 600px).
+- Botão de remover tarefa sempre visível em telas de toque, onde não existe hover.
 
-## Tecnologias e ferramentas
+## Tecnologias
 
-### Conhecimentos práticos
+- HTML5
+- CSS3 (Flexbox, Grid, variáveis CSS, media queries)
+- JavaScript (DOM, eventos, `Date`, `setInterval`)
+- Web Storage API (`localStorage`)
 
-Tecnologias com as quais já tive contato e que utilizo ou utilizei nos estudos e projetos.
+## Estrutura do projeto
 
-<div align="left">
+```
+Pomodoro/
+├── index.html
+├── style/
+│   └── style.css
+├── script/
+│   ├── script.js        # lista de tarefas
+│   └── pomodoro.js      # timer, fases e histórico de estudo
+├── video/
+│   └── campo_florido_pixel_art_animado_1min.mp4
+└── README.md
+```
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+## Como executar
 
-</div>
+```bash
+git clone https://github.com/gustatugas/Pomodoro.git
+cd Pomodoro
+```
 
-### Em aprendizado e desenvolvimento
+Depois, abra o `index.html` no navegador. Não há dependências nem etapa de build.
 
-Tecnologias e conceitos que fazem parte da minha evolução na programação.
+> **Nota:** use `http://localhost` ou `https://` se for testar em outro dispositivo. O `crypto.randomUUID()` só funciona em contextos seguros.
 
-<div align="left">
+## Como funciona
 
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
+O estado do timer fica no `localStorage`:
 
-</div>
+| Chave | O que guarda |
+|---|---|
+| `fimEm` | Horário (timestamp) em que a fase atual termina |
+| `restantePausaMs` | Tempo restante, quando o timer está pausado |
+| `minutosSessao` | Duração, em minutos, da fase atual |
+| `fase` | `foco` ou `descanso` |
+| `historicoEstudo` | Objeto com os minutos estudados por dia |
+| `tarefas` | Lista de tarefas (`id`, `texto`, `concluida`) |
 
-Também estudo lógica de programação, manipulação do DOM, eventos, funções, arrays, objetos, armazenamento local com LocalStorage, responsividade e organização de projetos.
-## Projetos
+A cada segundo, `atualizar()` calcula `fimEm - Date.now()` e mostra o resultado. Pausar guarda o tempo restante e remove `fimEm`. Continuar faz o caminho inverso.
 
-### Pomodoro — Foco e Produtividade
+## Próximos passos
 
-Aplicação web desenvolvida para auxiliar na organização dos estudos e no gerenciamento do tempo.
+- [ ] Dashboard de estudo por semana e mês
+- [ ] Aviso sonoro ao fim de cada fase
+- [ ] Contar o tempo parcial quando o foco é pausado ou reiniciado
+- [ ] Back-end em Node.js para salvar o histórico fora do navegador
 
-**Funcionalidades:**
-- Temporizador com períodos de foco e descanso.
-- Controles para iniciar, pausar, continuar e reiniciar.
-- Lista de tarefas com opção de conclusão e remoção.
-- Histórico diário de tempo de estudo.
-- Persistência de dados utilizando LocalStorage.
-- Interface responsiva com plano de fundo animado em pixel art.
+## Aprendizados
 
-**Tecnologias:** HTML5, CSS3 e JavaScript.
-
-[![Repositório](https://img.shields.io/badge/Ver%20Projeto-Pomodoro-7C9BFF?style=for-the-badge&logo=github&logoColor=white)](https://github.com/gustatugas/Pomodoro)
-
-### Próximos projetos
-
-Pretendo continuar desenvolvendo aplicações práticas para aprofundar meus conhecimentos em JavaScript, bancos de dados, interfaces web e desenvolvimento de software.
-
-## Estatísticas do GitHub
-
-<div align="center">
-
-![Estatísticas do GitHub](https://github-readme-stats.vercel.app/api?username=gustatugas&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github)
-
-![Linguagens mais utilizadas](https://github-readme-stats.vercel.app/api/top-langs/?username=gustatugas&layout=compact&theme=tokyonight&hide_border=true)
-
-![Sequência de contribuições](https://streak-stats.demolab.com?user=gustatugas&theme=tokyonight&hide_border=true)
-
-</div>
-
-## Objetivos
-
-- Aprimorar meus conhecimentos em JavaScript.
-- Desenvolver projetos cada vez mais completos.
-- Aprender boas práticas de programação e versionamento.
-- Aprofundar meus conhecimentos em bancos de dados e desenvolvimento web.
-- Construir um portfólio que demonstre minha evolução como desenvolvedor.
+Projeto feito para praticar JavaScript: manipulação do DOM, eventos, persistência com `localStorage`, controle de tempo com `Date` e design responsivo.
 
 ---
 
-<div align="center">
-
-**Aprendizado contínuo, prática e evolução.**
-
-</div>
+Feito por [Gustavo](https://github.com/gustatugas) durante os estudos de desenvolvimento web.
